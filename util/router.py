@@ -1,9 +1,9 @@
 from fastapi import APIRouter
 
-from storage.storage import storage
+from user.user_manager import user_manager
 
 heartbeat_router = APIRouter()
 
 @heartbeat_router.post("/heartbeat")
 async def update_user_heartbeat_ts(nickname: str):
-    storage.update_user_heartbeat_ts(nickname)
+    user_manager.update_user_heartbeat_ts(nickname)

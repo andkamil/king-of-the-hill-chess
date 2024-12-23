@@ -4,15 +4,15 @@ from user.user import User
 
 from datetime import datetime
 
-class Storage(BaseModel):
-    # games: list[Game] | None = None
-    users: dict[str, User] | None = None
+class UserManager(BaseModel):
+    users: dict[str, User] = {}
 
     def add_user(self, nickname: str) -> None:
         if nickname in self.users:
             return False
         user = User(nickname=nickname)
-        self.users[nickname] = nickname
+        self.users[nickname] = user
+        print(self.users)
 
     def remove_user(self, nickname: str) -> None:
         if nickname not in self.users:
@@ -24,5 +24,5 @@ class Storage(BaseModel):
             return False
         self.users[nickname].set_last_heartbeat_ts(datetime.now())
 
-storage = Storage()
+user_manager = UserManager()
 

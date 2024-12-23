@@ -1,9 +1,9 @@
 from fastapi import APIRouter
 
-from storage.storage import storage
+from user.user_manager import user_manager
 
 user_router = APIRouter()
 
 @user_router.post("/user")
 async def add_user(nickname: str):
-    storage.add_user(nickname)
+    user_manager.add_user(nickname)
